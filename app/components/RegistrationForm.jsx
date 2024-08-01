@@ -1,46 +1,153 @@
 // RegistrationForm.js
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-
+import { supabase } from "../supabaseConfig.js";
+import Swal from 'sweetalert2'
 const RegistrationForm = () => {
   const [teamSize, setTeamSize] = useState(2);
+  const [formData, setFormData] = useState({
+    teamName: "",
+    teamIdea: "",
+    headName: "",
+    headBranch: "",
+    headSemester: "",
+    headCollege: "",
+    headPhone: "",
+    headGithub: "",
+    members: Array(1).fill({
+      name: "",
+      branch: "",
+      semester: "",
+      college: "",
+      role: "",
+    }),
+  });
+
+  useEffect(() => {
+    setFormData((prevState) => ({
+      ...prevState,
+      members: Array(teamSize - 1).fill({
+        name: "",
+        branch: "",
+        semester: "",
+        college: "",
+        role: "",
+      }),
+    }));
+  }, [teamSize]);
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
+  };
+
+  const handleMemberChange = (index, e) => {
+    const { id, value } = e.target;
+    const members = [...formData.members];
+    const memberKey = id.split("-")[1];
+    members[index] = { ...members[index], [memberKey]: value };
+    setFormData((prevState) => ({
+      ...prevState,
+      members,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const {
+      teamName,
+      teamIdea,
+      headName,
+      headBranch,
+      headSemester,
+      headCollege,
+      headPhone,
+      headGithub,
+      members,
+    } = formData;
+    const { error } = await supabase.from("registrations").insert([
+      {
+        team_name: teamName,
+        team_idea: teamIdea,
+        head_name: headName,
+        head_branch: headBranch,
+        head_semester: headSemester,
+        head_college: headCollege,
+        head_phone: headPhone,
+        head_github: headGithub,
+        members,
+      },
+    ]);
+
+    if (error) {
+      Swal.fire({
+        title: 'Oops!',
+        text: 'Sorry, your team couldn`t be registered.',
+        icon: 'error'
+      })
+    } else {
+      Swal.fire({
+        title: 'Woohoo!',
+        text: 'Your team is registered succesfully for Campus Creators',
+        icon: 'success',
+        confirmButtonText: 'Cool, Let`s Hack',
+        confirmButtonColor:"#06166A"
+      })
+    }
+  };
 
   return (
     <div className="bg-hackathon-background bg-cover bg-no-repeat min-h-screen">
       <div className="min-h-screen p-4 sm:p-8 backdrop-blur-xl">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <form className="p-4 sm:p-8 bg-gray-800 shadow-md rounded-md w-full max-w-3xl mx-auto text-white my-5">
+          <form
+            onSubmit={handleSubmit}
+            className="p-4 sm:p-8 bg-gray-800 shadow-md rounded-md w-full max-w-3xl mx-auto text-white my-5"
+          >
             <h2 className="text-xl sm:text-2xl font-bold mb-6 underline text-center">
               Registration Form
             </h2>
-            
-            <h3 className="text-lg sm:text-xl font-semibold mb-4">Team Details</h3>
+
+            <h3 className="text-lg sm:text-xl font-semibold mb-4">
+              Team Details
+            </h3>
             <div className="mb-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="grid grid-cols-2 gap-4 sm:col-span-2">
                 <div className="mb-4">
-                  <label htmlFor="teamname" className="block text-white">Team Name</label>
+                  <label htmlFor="teamName" className="block text-white">
+                    Team Name
+                  </label>
                   <input
                     type="text"
-                    id="teamname"
+                    id="teamName"
                     className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
                     required
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="mb-4">
-                  <label htmlFor="teamidea" className="block text-white">Team Idea</label>
+                  <label htmlFor="teamIdea" className="block text-white">
+                    Team Idea
+                  </label>
                   <input
                     type="text"
-                    id="teamidea"
+                    id="teamIdea"
                     className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
                     required
+                    onChange={handleChange}
                   />
                 </div>
               </div>
               <div className="mb-4 sm:col-span-1">
-                <label htmlFor="teamsize" className="block text-white">Team Size</label>
+                <label htmlFor="teamSize" className="block text-white">
+                  Team Size
+                </label>
                 <select
-                  id="teamsize"
+                  id="teamSize"
                   className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
                   value={teamSize}
                   onChange={(e) => setTeamSize(parseInt(e.target.value))}
@@ -52,117 +159,83 @@ const RegistrationForm = () => {
               </div>
             </div>
 
-            <h3 className="text-lg sm:text-xl font-semibold mb-4">Head Details</h3>
+            <h3 className="text-lg sm:text-xl font-semibold mb-4">
+              Head Details
+            </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               <div className="mb-4">
-                <label htmlFor="headName" className="block text-white">Name</label>
+                <label htmlFor="headName" className="block text-white">
+                  Name
+                </label>
                 <input
                   type="text"
                   id="headName"
                   className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
                   required
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="headBranch" className="block text-white">Branch</label>
+                <label htmlFor="headBranch" className="block text-white">
+                  Branch
+                </label>
                 <input
                   type="text"
                   id="headBranch"
                   className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
                   required
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="headSemester" className="block text-white">Semester</label>
+                <label htmlFor="headSemester" className="block text-white">
+                  Semester
+                </label>
                 <input
                   type="text"
                   id="headSemester"
                   className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
                   required
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="headCollege" className="block text-white">College Name</label>
+                <label htmlFor="headCollege" className="block text-white">
+                  College Name
+                </label>
                 <input
                   type="text"
                   id="headCollege"
                   className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
                   required
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="headPhone" className="block text-white">Phone Number</label>
+                <label htmlFor="headPhone" className="block text-white">
+                  Phone Number
+                </label>
                 <input
                   type="tel"
                   id="headPhone"
                   className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
                   required
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="headGithub" className="block text-white">GitHub</label>
+                <label htmlFor="headGithub" className="block text-white">
+                  GitHub
+                </label>
                 <input
                   type="text"
                   id="headGithub"
                   className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
                   required
+                  onChange={handleChange}
                 />
               </div>
             </div>
-
-            {[...Array(teamSize - 1)].map((_, index) => (
-              <div key={index}>
-                <h3 className="text-lg sm:text-xl font-semibold mb-4 mt-6">Member {index + 1} Details</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                  <div className="mb-4">
-                    <label htmlFor={`member${index + 1}Name`} className="block text-white">Name</label>
-                    <input
-                      type="text"
-                      id={`member${index + 1}Name`}
-                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                      required
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor={`member${index + 1}Branch`} className="block text-white">Branch</label>
-                    <input
-                      type="text"
-                      id={`member${index + 1}Branch`}
-                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                      required
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor={`member${index + 1}Semester`} className="block text-white">Semester</label>
-                    <input
-                      type="text"
-                      id={`member${index + 1}Semester`}
-                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                      required
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor={`member${index + 1}College`} className="block text-white">College Name</label>
-                    <input
-                      type="text"
-                      id={`member${index + 1}College`}
-                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                      required
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor={`member${index + 1}Role`} className="block text-white">Role</label>
-                    <input
-                      type="text"
-                      id={`member${index + 1}Role`}
-                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
-
             <div className="flex items-center mb-4">
               <input
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
@@ -177,7 +250,6 @@ const RegistrationForm = () => {
                 I agree with the Terms and Conditions
               </label>
             </div>
-
             <div className="flex items-center mb-4">
               <input
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
@@ -200,11 +272,96 @@ const RegistrationForm = () => {
               </label>
             </div>
 
+            {[...Array(teamSize - 1)].map((_, index) => (
+              <div key={index}>
+                <h3 className="text-lg sm:text-xl font-semibold mb-4 mt-6">
+                  Member {index + 1} Details
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                  <div className="mb-4">
+                    <label
+                      htmlFor={`member${index + 1}-name`}
+                      className="block text-white"
+                    >
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id={`member${index + 1}-name`}
+                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
+                      required
+                      onChange={(e) => handleMemberChange(index, e)}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor={`member${index + 1}-branch`}
+                      className="block text-white"
+                    >
+                      Branch
+                    </label>
+                    <input
+                      type="text"
+                      id={`member${index + 1}-branch`}
+                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
+                      required
+                      onChange={(e) => handleMemberChange(index, e)}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor={`member${index + 1}-semester`}
+                      className="block text-white"
+                    >
+                      Semester
+                    </label>
+                    <input
+                      type="text"
+                      id={`member${index + 1}-semester`}
+                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
+                      required
+                      onChange={(e) => handleMemberChange(index, e)}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor={`member${index + 1}-college`}
+                      className="block text-white"
+                    >
+                      College Name
+                    </label>
+                    <input
+                      type="text"
+                      id={`member${index + 1}-college`}
+                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
+                      required
+                      onChange={(e) => handleMemberChange(index, e)}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor={`member${index + 1}-role`}
+                      className="block text-white"
+                    >
+                      Role
+                    </label>
+                    <input
+                      type="text"
+                      id={`member${index + 1}-role`}
+                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
+                      required
+                      onChange={(e) => handleMemberChange(index, e)}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mt-6"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
-              Register
+              Submit
             </button>
           </form>
         </div>
@@ -212,5 +369,4 @@ const RegistrationForm = () => {
     </div>
   );
 };
-
 export default RegistrationForm;

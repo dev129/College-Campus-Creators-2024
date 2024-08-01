@@ -3,14 +3,14 @@ import Link from "next/link";
 import { FaIdCard, FaRegistered } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
 import { IoMdHome } from "react-icons/io";
-import { RiRegisteredFill, RiTeamFill } from "react-icons/ri";
+import { RiTeamFill } from "react-icons/ri";
 import { Orbitron } from "next/font/google";
 import Image from "next/image";
 const orbitron = Orbitron({ weight: ["600"], subsets: ["latin"] });
 
 const Navbar = () => {
   return (
-    <nav className="bg-transparent   text-white">
+    <nav className="bg-transparent text-white shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center navbar-start">
@@ -27,7 +27,7 @@ const Navbar = () => {
               <label tabIndex={0} className="btn btn-ghost btn-circle">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -36,7 +36,7 @@ const Navbar = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h7"
+                    d="M4 6h16M4 12h16M4 18h16"
                   />
                 </svg>
               </label>
@@ -47,7 +47,7 @@ const Navbar = () => {
                 <li>
                   <Link href="/pages/AboutUs">
                     <div className="flex items-center">
-                      <FaIdCard className="mr-2" />
+                      <FaIdCard className="mr-2 text-xl" />
                       About Us
                     </div>
                   </Link>
@@ -55,22 +55,23 @@ const Navbar = () => {
                 <li>
                   <Link href="/pages/Team">
                     <div className="flex items-center">
-                      <RiTeamFill className="mr-2" />
+                      <RiTeamFill className="mr-2 text-xl" />
                       Team
                     </div>
                   </Link>
                 </li>
                 <li>
-                  <div className="flex items-center">
-                    <FaRegistered/><Link href="/pages/Registration">
-                    Register Now
-                    </Link>
-                  </div>
+                  <Link href="/pages/Registration">
+                    <div className="flex items-center">
+                      <FaRegistered className="mr-2 text-xl" />
+                      Register Now
+                    </div>
+                  </Link>
                 </li>
                 <li>
                   <Link href="/">
                     <div className="flex items-center">
-                      <IoMdHome className="mr-2" />
+                      <IoMdHome className="mr-2 text-xl" />
                       Home
                     </div>
                   </Link>
@@ -81,7 +82,7 @@ const Navbar = () => {
 
           <div className="text-center flex-grow navbar-center">
             <h1
-              className={`text-md md:text-3xl lg:text-5xl font-bold pr-2 ${orbitron.className}`}
+              className={`text-xl md:text-3xl lg:text-5xl font-bold pr-2 ${orbitron.className}`}
             >
               Creative Minds 2024
             </h1>
@@ -90,21 +91,21 @@ const Navbar = () => {
           <div className="flex items-center navbar-end">
             <div className="hidden lg:flex space-x-4">
               <Link href="/pages/AboutUs" passHref>
-                <span className="p-2 flex flex-col items-center hover:bg-blue-300 rounded-md">
-                  <FaIdCard className="mb-1" />
-                  <span>About Us</span>
+                <span className="p-2 flex flex-col items-center hover:bg-blue-600 rounded-md transition-colors">
+                  <FaIdCard className="mb-1 text-xl" />
+                  <span className="text-sm">About Us</span>
                 </span>
               </Link>
-              <Link href="/pages/Team" passHref>
-                <span className="p-2 flex flex-col items-center hover:bg-blue-300 rounded-md">
-                  <RiTeamFill className="mb-1" />
-                  <span>Our Team</span>
+              <Link href="/pages/ContactUs" passHref>
+                <span className="p-2 flex flex-col items-center hover:bg-blue-600 rounded-md transition-colors">
+                  <RiTeamFill className="mb-1 text-xl" />
+                  <span className="text-sm">Contact Us</span>
                 </span>
               </Link>
               <Link href="/pages/Registration" passHref>
-                <span className="p-2 flex flex-col items-center hover:bg-blue-300 rounded-md">
-                <GiArchiveRegister />
-                  Register 
+                <span className="p-2 flex flex-col items-center hover:bg-blue-600 rounded-md transition-colors">
+                  <GiArchiveRegister className="mb-1 text-xl" />
+                  <span className="text-sm">Register</span>
                 </span>
               </Link>
             </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from "next/link";
 import Image from "next/image";
 import Medal from "@/app/components/Medal";
 import TeamCards from './TeamCards';
@@ -250,7 +249,9 @@ const Event = () => {
       <h2 className="text-4xl font-bold mb-6 text-neon-pink">
         Rules and Regulations
       </h2>
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300 ">
+      <div className='flex justify-center  '>
+
+      <ul className="grid  grid-cols-1 md:grid-cols-2 gap-x-40 gap-y-4 text-gray-300 ">
         <li className="flex items-center">
           <span className="text-neon-blue mr-2">•</span> Clean commit history required
         </li>
@@ -276,6 +277,7 @@ const Event = () => {
           <span className="text-neon-blue mr-2">•</span> Respect all participants and organizers
         </li>
       </ul>
+      </div>
       <p className="mt-4 text-gray-300 text-center ">
         For any disputes, the decision of the hackathon lead is final.
       </p>
