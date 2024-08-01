@@ -2,7 +2,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { supabase } from "@/app/supabaseConfig.js";
+import { supabase } from "../supabaseConfig";
 import Swal from 'sweetalert2'
 const RegistrationForm = () => {
   const [teamSize, setTeamSize] = useState(2);
