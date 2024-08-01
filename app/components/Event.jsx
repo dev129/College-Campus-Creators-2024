@@ -27,6 +27,7 @@ const Event = () => {
             objectFit="cover"
             alt="Hackathon Event"
             className="rounded-xl"
+            priority
           />
         </div>
       </div>

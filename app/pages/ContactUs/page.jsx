@@ -53,7 +53,7 @@ const Page = () => {
           </div>
           <div className="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-2">
             <div className="align-middle">
-              <Image src='/hack-removebg-preview.png' width={500} height={500} alt="Contact Image" />
+              <Image src='/hack-removebg-preview.png' width={500} height={500} alt="Contact Image" priority />
             </div>
             <div className="p-4 py-6 rounded-lg bg-gray-50 dark:bg-gray-800 md:p-8">
               <form
