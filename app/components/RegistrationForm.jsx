@@ -101,7 +101,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className="bg-hackathon-background bg-cover bg-no-repeat min-h-screen">
+    <div className="bg-black bg-cover bg-no-repeat min-h-screen">
       <div className="min-h-screen p-4 sm:p-8 backdrop-blur-xl">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <form
