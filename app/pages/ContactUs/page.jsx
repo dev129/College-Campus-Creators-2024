@@ -1,13 +1,13 @@
 'use client';
-
 import Navbar from "@/app/components/Navbar";
 import Image from "next/image";
+import contactUsHackathonPoster from "@/public/hack-removebg-preview.png"
 import React, { useEffect, useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import Swal from "sweetalert2";
 
 const Page = () => {
-  const [state, handleSubmit, reset] = useForm("mrbzqkdb");
+  const [state, handleSubmit, reset] = useForm("xgvwkpdn");
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   // Handle form submission
@@ -38,7 +38,7 @@ const Page = () => {
     <div className="bg-black text-white">
       <Navbar />
 
-      <section className="bg-white dark:bg-gray-900">
+      <section className="bg-blue-900">
         <div className="container px-6 py-12 mx-auto">
           <div>
             <p className="font-medium text-blue-500 dark:text-blue-400">
@@ -53,11 +53,11 @@ const Page = () => {
           </div>
           <div className="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-2">
             <div className="align-middle">
-              <Image src='/hack-removebg-preview.png' width={500} height={500} alt="Contact Image" priority />
+              <Image src={contactUsHackathonPoster}  alt="Contact Image" priority />
             </div>
             <div className="p-4 py-6 rounded-lg bg-gray-50 dark:bg-gray-800 md:p-8">
               <form
-                action="https://formspree.io/f/mrbzqkdb"
+                action="https://formspree.io/f/xgvwkpdn"
                 method="POST"
                 className="space-y-4"
                 onSubmit={onSubmit} // Use custom onSubmit handler

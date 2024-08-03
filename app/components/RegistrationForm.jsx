@@ -95,22 +95,23 @@ const RegistrationForm = () => {
         text: 'Your team is registered succesfully for Campus Creators',
         icon: 'success',
         confirmButtonText: 'Cool, Let`s Hack',
-        confirmButtonColor:"#06166A"
+        confirmButtonColor: "#06166A"
       })
     }
   };
 
   return (
-    <div className="bg-black bg-cover bg-no-repeat min-h-screen">
+    <div className="bg-blue-900 bg-cover bg-no-repeat min-h-screen">
       <div className="min-h-screen p-4 sm:p-8 backdrop-blur-xl">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <form
             onSubmit={handleSubmit}
             className="p-4 sm:p-8 bg-gray-800 shadow-md rounded-md w-full max-w-3xl mx-auto text-white my-5"
           >
-            <h2 className="text-xl sm:text-2xl font-bold mb-6 underline text-center">
-              Registration Form
+            <h2 className="text-xl sm:text-2xl font-bold mb-6  text-center">
+              <div className="divider divider-accent">Registration Form</div>
             </h2>
+            <br />
 
             <h3 className="text-lg sm:text-xl font-semibold mb-4">
               Team Details
@@ -247,7 +248,18 @@ const RegistrationForm = () => {
                 className="ms-2 text-sm font-medium text-gray-300"
                 htmlFor="terms-checkbox"
               >
-                I agree with the Terms and Conditions
+                I agree with the{' '}
+                <span className="tooltip tooltip-right" data-tip="
+• Clean commit history required
+• One person per team
+• Use open-source software only
+• One entry per team
+• Teams of 2-4 members
+• HTML, CSS, Vanilla JS only
+• Tailwind CSS is permitted
+• Respect all participants and organizers">
+                  Terms and Conditions. </span>
+
               </label>
             </div>
             <div className="flex items-center mb-4">
@@ -359,9 +371,9 @@ const RegistrationForm = () => {
 
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full text-center"
             >
-              Submit
+              Let's Hack
             </button>
           </form>
         </div>

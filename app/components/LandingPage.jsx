@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import hackathonposter from "@/public/hackathon-poster.webp"
 const LandingPage = () => {
 
   return (
@@ -28,14 +29,11 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="w-full xl:w-3/5 flex justify-end p-12 overflow-hidden ">
-            <div>
-              <Image
-                src="/hackathon-poster.webp"
-                alt="HackathonImage"
-                width={500}
-                height={500}
-              />
-            </div>
+            <Image
+              src={hackathonposter}
+              alt=""
+              priority
+            />
           </div>
         </div>
       </div>

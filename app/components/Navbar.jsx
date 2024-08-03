@@ -10,7 +10,7 @@ const orbitron = Orbitron({ weight: ["600"], subsets: ["latin"] });
 
 const Navbar = () => {
   return (
-    <nav className="bg-transparent text-white shadow-md">
+    <nav className="bg-blue-900 text-white shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center navbar-start">
@@ -21,6 +21,7 @@ const Navbar = () => {
                 width={80}
                 alt="Logo"
                 className="hidden lg:block"
+                priority
               />
             </Link>
             <div className="dropdown lg:hidden">
@@ -87,13 +88,12 @@ const Navbar = () => {
               Creative Minds 2024
             </h1>
           </div>
-
           <div className="flex items-center navbar-end">
             <div className="hidden lg:flex space-x-4">
               <Link href="/pages/AboutUs" passHref>
-                <span className="p-2 flex flex-col items-center hover:bg-blue-600 rounded-md transition-colors">
+                <span className="p-2 pt-2 flex flex-col items-center hover:bg-blue-600 rounded-md transition-colors tooltip tooltip-bottom "  data-tip="About Us">
                   <FaIdCard className="mb-1 text-xl" />
-                  <span className="text-sm">About Us</span>
+                  About Us
                 </span>
               </Link>
               <Link href="/pages/ContactUs" passHref>
