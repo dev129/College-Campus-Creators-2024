@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/react"
 import LandingPage from "./components/LandingPage";
 const Home = () => {
   return (
-    <div className="bg-black min-h-screen text-white ">
+    <div className="bg-blue-900 min-h-screen text-white ">
       <Navbar />
       <LandingPage />
     </div>
