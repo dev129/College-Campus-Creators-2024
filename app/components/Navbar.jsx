@@ -1,29 +1,36 @@
 import React from "react";
 import Link from "next/link";
 import { FaIdCard, FaRegistered } from "react-icons/fa";
-import { GiArchiveRegister } from "react-icons/gi";
+
 import { IoMdHome } from "react-icons/io";
 import { RiTeamFill } from "react-icons/ri";
-import { Orbitron } from "next/font/google";
 import Image from "next/image";
-const orbitron = Orbitron({ weight: ["600"], subsets: ["latin"] });
 
 const Navbar = () => {
   return (
-    <nav className="bg-blue-900 text-white shadow-md">
+    <nav className="bg-gradient-to-r from-blue-500 to-blue-900 text-white shadow-md">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center ">
           <div className="flex items-center navbar-start">
-            <Link href="/" passHref>
+            <span className="flex flex-row">
               <Image
                 src="/background2.webp"
                 height={80}
                 width={80}
                 alt="Logo"
-                className="hidden lg:block"
+                className=" hidden lg:block"
                 priority
               />
-            </Link>
+              <span className="align-middle p-3 pre font-extrabold text-3xl">{' '}X{' '}</span>
+              <Image
+                src="/iic logo.png"
+                height={80}
+                width={100}
+                alt="IIC Logo"
+                className="hidden mt-2  lg:block"
+                priority
+              />
+              </span>
             <div className="dropdown lg:hidden">
               <label tabIndex={0} className="btn btn-ghost btn-circle">
                 <svg
@@ -54,10 +61,10 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/pages/Team">
+                  <Link href="/pages/ContactUs">
                     <div className="flex items-center">
                       <RiTeamFill className="mr-2 text-xl" />
-                      Team
+                      Contact Us
                     </div>
                   </Link>
                 </li>
@@ -80,32 +87,26 @@ const Navbar = () => {
               </ul>
             </div>
           </div>
-
-          <div className="text-center flex-grow navbar-center">
-            <h1
-              className={`text-xl md:text-3xl lg:text-5xl font-bold pr-2 ${orbitron.className}`}
-            >
-              Creative Minds 2024
-            </h1>
-          </div>
           <div className="flex items-center navbar-end">
             <div className="hidden lg:flex space-x-4">
+              <Link href="/" passHref>
+                <div className="p-2 pt-2 flex flex-col items-center hover:bg-blue-600 rounded-md transition-colors ">
+                  Home
+                </div>
+              </Link>
               <Link href="/pages/AboutUs" passHref>
-                <span className="p-2 pt-2 flex flex-col items-center hover:bg-blue-600 rounded-md transition-colors tooltip tooltip-bottom "  data-tip="About Us">
-                  <FaIdCard className="mb-1 text-xl" />
+                <span className="p-2 pt-2 flex flex-col items-center hover:bg-blue-600 rounded-md transition-colors ">
                   About Us
                 </span>
               </Link>
               <Link href="/pages/ContactUs" passHref>
-                <span className="p-2 flex flex-col items-center hover:bg-blue-600 rounded-md transition-colors">
-                  <RiTeamFill className="mb-1 text-xl" />
-                  <span className="text-sm">Contact Us</span>
+                <span className="p-2 flex flex-col items-center hover:bg-blue-600 rounded-md transition-colors ">
+                  <span>Contact Us</span>
                 </span>
               </Link>
               <Link href="/pages/Registration" passHref>
                 <span className="p-2 flex flex-col items-center hover:bg-blue-600 rounded-md transition-colors">
-                  <GiArchiveRegister className="mb-1 text-xl" />
-                  <span className="text-sm">Register</span>
+                  <span>Register</span>
                 </span>
               </Link>
             </div>

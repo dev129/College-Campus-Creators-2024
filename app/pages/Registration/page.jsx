@@ -4,7 +4,7 @@ import React from 'react'
 
 const pages = () => {
   return (
-    <div className='bg-black'>
+    <div className>
     <Navbar/>
     <RegistrationForm/>
     </div>

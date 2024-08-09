@@ -5,7 +5,7 @@ import { useState } from 'react';
 const faqs = [
   {
     "question": "What technologies can I use during the hackathon?",
-    "answer": "You can use HTML, CSS, and vanilla JavaScript to build your projects. The Tailwind CSS framework is also allowed to help you style your applications. However, please refrain from using any AI website builders or software that automates the development process."
+    "answer": "Any technological field be it AI, Blockchain, Web Developement and many more."
   },
   {
     "question": "Can I use AI tools to assist with my coding?",
@@ -13,23 +13,19 @@ const faqs = [
   },
   {
     "question": "How do I upload my code on github ?",
-    "answer": "After your successful registration a guie shall be uploaded on the official whatsapp  channel where you will know how to upload and share your github code. "
+    "answer": "Uploading code on github will be told in the offline session (September 30th)"
   },
   {
     "question": "Is there a specific format for submitting my project?",
     "answer": "Yes, please ensure that your project is submitted as a GitHub repository. Include a README file that explains your project, its features, and how to run it. Detailed instructions will help the judges understand your work better."
   },
   {
-    "question": "Can I use external libraries or frameworks besides Tailwind CSS?",
-    "answer": "No, for this hackathon, you are limited to using only HTML, CSS, vanilla JavaScript, and the Tailwind CSS framework. This ensures a level playing field and allows participants to showcase their skills in these core technologies."
-  },
-  {
     "question": "What if I encounter technical issues during the hackathon?",
     "answer": "If you face any technical difficulties, please reach out to the support team via the designated communication channel."
   },
   {
-    "question": "Are there any restrictions on the project themes?",
-    "answer": "While there are no strict restrictions on themes, we encourage you to create projects that are innovative, user-friendly, and demonstrate your creativity and are useful for colleges . Please ensure that your project adheres to the hackathon's guidelines and values."
+    "question": "What shall be the theme of my project ?",
+    "answer": "Create projects that are innovative, user-friendly, and demonstrate your creativity and are useful for colleges . Please ensure that your project adheres to the hackathon's guidelines and values."
   },
   {
     "question": "How will the projects be judged?",
@@ -40,8 +36,8 @@ const faqs = [
     "answer": "We will provide access to a variety of resources, including tutorials, documentation, and links to helpful tools. Additionally, you can connect with mentors and other participants for guidance and support."
   },
   {
-    "question": "Can I participate if I am a beginner in web development?",
-    "answer": "Absolutely! This hackathon is open to participants of all skill levels. It's a great opportunity to learn, collaborate, and improve your skills in frontend development. Don't hesitate to ask for help when you need it!"
+    "question": "Can I participate if I am a beginner ?",
+    "answer": "Absolutely! This hackathon is open to participants of all skill levels. It's a great opportunity to learn, collaborate, and improve your skills . Don't hesitate to ask for help when you need it!"
   }
 ];
 

@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { supabase } from "../supabaseConfig.js";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 const RegistrationForm = () => {
   const [teamSize, setTeamSize] = useState(2);
+
   const [formData, setFormData] = useState({
     teamName: "",
     teamIdea: "",
@@ -85,23 +86,23 @@ const RegistrationForm = () => {
 
     if (error) {
       Swal.fire({
-        title: 'Oops!',
-        text: 'Sorry, your team couldn`t be registered.',
-        icon: 'error'
-      })
+        title: "Oops!",
+        text: "Sorry, your team couldn`t be registered.",
+        icon: "error",
+      });
     } else {
       Swal.fire({
-        title: 'Woohoo!',
-        text: 'Your team is registered succesfully for Campus Creators',
-        icon: 'success',
-        confirmButtonText: 'Cool, Let`s Hack',
-        confirmButtonColor: "#06166A"
-      })
+        title: "Woohoo!",
+        text: "Your team is registered succesfully for Campus Creators",
+        icon: "success",
+        confirmButtonText: "Cool, Let`s Hack",
+        confirmButtonColor: "#06166A",
+      });
     }
   };
 
   return (
-    <div className="bg-blue-900 bg-cover bg-no-repeat min-h-screen">
+    <div className="bg-gradient-to-r from-blue-500 to-blue-900  min-h-screen">
       <div className="min-h-screen p-4 sm:p-8 backdrop-blur-xl">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <form
@@ -109,7 +110,7 @@ const RegistrationForm = () => {
             className="p-4 sm:p-8 bg-gray-800 shadow-md rounded-md w-full max-w-3xl mx-auto text-white my-5"
           >
             <h2 className="text-xl sm:text-2xl font-bold mb-6  text-center">
-              <div className="divider divider-accent">Registration Form</div>
+              <div className="divider divider-accent">Registration Form (Institute Level)</div>
             </h2>
             <br />
 
@@ -248,18 +249,19 @@ const RegistrationForm = () => {
                 className="ms-2 text-sm font-medium text-gray-300"
                 htmlFor="terms-checkbox"
               >
-                I agree with the{' '}
-                <span className="tooltip tooltip-right" data-tip="
+                I agree with the{" "}
+                <span
+                  className="tooltip tooltip-right font-bold"
+                  data-tip="
 • Clean commit history required
 • One person per team
 • Use open-source software only
 • One entry per team
 • Teams of 2-4 members
-• HTML, CSS, Vanilla JS only
-• Tailwind CSS is permitted
-• Respect all participants and organizers">
-                  Terms and Conditions. </span>
-
+• Respect all participants, organizers"
+                >
+                  Terms and Conditions.{" "}
+                </span>
               </label>
             </div>
             <div className="flex items-center mb-4">
