@@ -7,9 +7,8 @@ const LandingPage = () => {
       <div className="absolute inset-0 z-0">
       </div>
       <div className="relative z-10 text-center px-4">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Debuggers X IIC </h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">Debuggers X <span className="text-slate-300">IIC</span> </h1>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">presents </h1>
-        
         <h1 className="text-4xl md:text-5xl font-bold mb-4">College Campus Creators</h1>
         <p className="mb-8 text-base md:text-lg">Register Create Win</p>
         <div className="flex flex-col md:flex-row justify-center space-x-0 md:space-x-4 space-y-4 md:space-y-0">

@@ -21,7 +21,7 @@ const Navbar = () => {
                 className=" hidden lg:block"
                 priority
               />
-              <span className="align-middle p-3 pre font-extrabold text-3xl">{' '}X{' '}</span>
+              <span className="align-middle p-3 pre font-extrabold text-3xl hidden lg:block">{' '}X{' '}</span>
               <Image
                 src="/iic logo.png"
                 height={80}
