@@ -110,7 +110,7 @@ const RegistrationForm = () => {
             className="p-4 sm:p-8 bg-gray-800 shadow-md rounded-md w-full max-w-3xl mx-auto text-white my-5"
           >
             <h2 className="text-xl sm:text-2xl font-bold mb-6  text-center">
-              <div className="divider divider-accent">Registration Form (Institute Level)</div>
+              <div className="divider divider-accent ">Registration Form <br/>(Institute Level)</div>
             </h2>
             <br />
 

@@ -13,10 +13,10 @@ const LandingPage = () => {
         <p className="mb-8 text-base md:text-lg">Register Create Win</p>
         <div className="flex flex-col md:flex-row justify-center space-x-0 md:space-x-4 space-y-4 md:space-y-0">
           <button className="px-8 py-4 bg-white text-black rounded-full">
-            <Link href="/pages/Registration">Register Now</Link>
+            <Link href="/pages/Registration" passHref>Register Now</Link>
           </button>
           <button className="px-8 py-4 bg-blue-950 text-white rounded-full">
-            <Link href="/pages/AboutUs">Tell Me More</Link>
+            <Link href="/pages/AboutUs"passHref>Tell Me More</Link>
           </button>
         </div>
       </div>
