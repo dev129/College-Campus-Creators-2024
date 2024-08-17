@@ -1,9 +1,9 @@
-// RegistrationForm.js
-"use client";
+'use client'
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { supabase } from "../supabaseConfig.js";
 import Swal from "sweetalert2";
+
 const RegistrationForm = () => {
   const [teamSize, setTeamSize] = useState(2);
 
@@ -101,286 +101,108 @@ const RegistrationForm = () => {
     }
   };
 
+
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-blue-900  min-h-screen">
+    <div className="bg-gradient-to-r from-blue-500 to-blue-900 min-h-screen">
       <div className="min-h-screen p-4 sm:p-8 backdrop-blur-xl">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <form
-            onSubmit={handleSubmit}
-            className="p-4 sm:p-8 bg-gray-800 shadow-md rounded-md w-full max-w-3xl mx-auto text-white my-5"
-          >
-            <h2 className="text-xl sm:text-2xl font-bold mb-6  text-center">
-              <div className="divider divider-accent ">Registration Form <br/>(Institute Level)</div>
-            </h2>
-            <br />
+          <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
+            <div className="bg-gray-800 shadow-2xl rounded-lg overflow-hidden">
+              <div className="bg-blue-600 p-6 text-white">
+                <h2 className="text-3xl sm:text-4xl font-bold text-center">
+                  Hack the Future: Registration
+                </h2>
+                <p className="text-center mt-2 text-blue-200">Join the innovation revolution!</p>
+              </div>
 
-            <h3 className="text-lg sm:text-xl font-semibold mb-4">
-              Team Details
-            </h3>
-            <div className="mb-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="grid grid-cols-2 gap-4 sm:col-span-2">
-                <div className="mb-4">
-                  <label htmlFor="teamName" className="block text-white">
-                    Team Name
-                  </label>
-                  <input
-                    type="text"
-                    id="teamName"
-                    className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                    required
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="teamIdea" className="block text-white">
-                    Team Idea
-                  </label>
-                  <input
-                    type="text"
-                    id="teamIdea"
-                    className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                    required
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-              <div className="mb-4 sm:col-span-1">
-                <label htmlFor="teamSize" className="block text-white">
-                  Team Size
-                </label>
-                <select
-                  id="teamSize"
-                  className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                  value={teamSize}
-                  onChange={(e) => setTeamSize(parseInt(e.target.value))}
-                >
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                </select>
-              </div>
-            </div>
+              <div className="p-6 space-y-8">
+                {/* Team Details Section */}
+                <section className="bg-gray-700 p-6 rounded-lg shadow-inner">
+                  <h3 className="text-2xl font-semibold mb-4 text-blue-300">Team Details</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="teamName" className="block text-white mb-2">Team Name</label>
+                        <input type="text" id="teamName" className="w-full px-3 py-2 border rounded-md text-white bg-gray-600 focus:ring-2 focus:ring-blue-400" required onChange={handleChange} />
+                      </div>
+                      <div>
+                        <label htmlFor="teamIdea" className="block text-white mb-2">Team Idea</label>
+                        <input type="text" id="teamIdea" className="w-full px-3 py-2 border rounded-md text-white bg-gray-600 focus:ring-2 focus:ring-blue-400" required onChange={handleChange} />
+                      </div>
+                    </div>
+                    <div>
+                      <label htmlFor="teamSize" className="block text-white mb-2">Team Size</label>
+                      <select id="teamSize" className="w-full px-3 py-2 border rounded-md text-white bg-gray-600 focus:ring-2 focus:ring-blue-400" value={teamSize} onChange={(e) => setTeamSize(parseInt(e.target.value))}>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                      </select>
+                    </div>
+                  </div>
+                </section>
 
-            <h3 className="text-lg sm:text-xl font-semibold mb-4">
-              Head Details
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-              <div className="mb-4">
-                <label htmlFor="headName" className="block text-white">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="headName"
-                  className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                  required
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="headBranch" className="block text-white">
-                  Branch
-                </label>
-                <input
-                  type="text"
-                  id="headBranch"
-                  className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                  required
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="headSemester" className="block text-white">
-                  Semester
-                </label>
-                <input
-                  type="text"
-                  id="headSemester"
-                  className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                  required
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="headCollege" className="block text-white">
-                  College Name
-                </label>
-                <input
-                  type="text"
-                  id="headCollege"
-                  className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                  required
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="headPhone" className="block text-white">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="headPhone"
-                  className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                  required
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="headGithub" className="block text-white">
-                  GitHub
-                </label>
-                <input
-                  type="text"
-                  id="headGithub"
-                  className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                  required
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <div className="flex items-center mb-4">
-              <input
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="terms-checkbox"
-                type="checkbox"
-                required
-              />
-              <label
-                className="ms-2 text-sm font-medium text-gray-300"
-                htmlFor="terms-checkbox"
-              >
-                I agree with the{" "}
-                <span
-                  className="tooltip tooltip-right font-bold"
-                  data-tip="
-• Clean commit history required
-• One person per team
-• Use open-source software only
-• One entry per team
-• Teams of 2-4 members
-• Respect all participants, organizers"
-                >
-                  Terms and Conditions.{" "}
-                </span>
-              </label>
-            </div>
-            <div className="flex items-center mb-4">
-              <input
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="whatsapp-checkbox"
-                type="checkbox"
-                required
-              />
-              <label
-                className="ms-2 text-sm font-medium text-gray-300"
-                htmlFor="whatsapp-checkbox"
-              >
-                I have joined the official{" "}
-                <Link
-                  className="text-blue-400 hover:underline"
-                  href="https://chat.whatsapp.com/FCcsK5UFJbmBgTniYwTcVR"
-                >
-                  WhatsApp Group
-                </Link>{" "}
-                of the hackathon.
-              </label>
-            </div>
+                {/* Head Details Section */}
+                <section className="bg-gray-700 p-6 rounded-lg shadow-inner">
+                  <h3 className="text-2xl font-semibold mb-4 text-green-300">Head Details</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {["Name", "Branch", "Semester", "College Name", "Phone Number", "GitHub Profile Link"].map((field) => (
+                      <div key={field}>
+                        <label htmlFor={`head${field.replace(/\s+/g, '')}`} className="block text-white mb-2">{field}</label>
+                        <input type={field === "Phone Number" ? "tel" : "text"} id={`head${field.replace(/\s+/g, '')}`} className="w-full px-3 py-2 border rounded-md text-white bg-gray-600 focus:ring-2 focus:ring-green-400" required onChange={handleChange} />
+                      </div>
+                    ))}
+                  </div>
+                </section>
 
-            {[...Array(teamSize - 1)].map((_, index) => (
-              <div key={index}>
-                <h3 className="text-lg sm:text-xl font-semibold mb-4 mt-6">
-                  Member {index + 1} Details
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                  <div className="mb-4">
-                    <label
-                      htmlFor={`member${index + 1}-name`}
-                      className="block text-white"
-                    >
-                      Name
+                {/* Member Details Sections */}
+                {[...Array(teamSize - 1)].map((_, index) => (
+                  <section key={index} className="bg-gray-700 p-6 rounded-lg shadow-inner">
+                    <h3 className="text-2xl font-semibold mb-4 text-purple-300">Member {index + 1} Details</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {["Name", "Branch", "Semester", "College Name", "Role"].map((field) => (
+                        <div key={field}>
+                          <label htmlFor={`member${index + 1}-${field.toLowerCase()}`} className="block text-white mb-2">{field}</label>
+                          <input type="text" id={`member${index + 1}-${field.toLowerCase()}`} className="w-full px-3 py-2 border rounded-md text-white bg-gray-600 focus:ring-2 focus:ring-purple-400" required onChange={(e) => handleMemberChange(index, e)} />
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                ))}
+
+                {/* Terms and Conditions */}
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <input className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500" id="terms-checkbox" type="checkbox" required />
+                    <label className="ml-3 text-sm font-medium text-gray-300" htmlFor="terms-checkbox">
+                      I agree with the{" "}
+                      <span className="tooltip tooltip-right font-bold text-blue-400 cursor-help" data-tip="• Clean commit history required&#10;• One person per team&#10;• Use open-source software only&#10;• One entry per team&#10;• Teams of 2-4 members&#10;• Respect all participants, organizers">
+                        Terms and Conditions.
+                      </span>
                     </label>
-                    <input
-                      type="text"
-                      id={`member${index + 1}-name`}
-                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                      required
-                      onChange={(e) => handleMemberChange(index, e)}
-                    />
                   </div>
-                  <div className="mb-4">
-                    <label
-                      htmlFor={`member${index + 1}-branch`}
-                      className="block text-white"
-                    >
-                      Branch
+                  <div className="flex items-center">
+                    <input className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500" id="whatsapp-checkbox" type="checkbox" required />
+                    <label className="ml-3 text-sm font-medium text-gray-300" htmlFor="whatsapp-checkbox">
+                      I have joined the official{" "}
+                      <Link className="text-blue-400 hover:underline" href="https://chat.whatsapp.com/FCcsK5UFJbmBgTniYwTcVR">
+                        WhatsApp Group
+                      </Link>{" "}
+                      of the hackathon.
                     </label>
-                    <input
-                      type="text"
-                      id={`member${index + 1}-branch`}
-                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                      required
-                      onChange={(e) => handleMemberChange(index, e)}
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label
-                      htmlFor={`member${index + 1}-semester`}
-                      className="block text-white"
-                    >
-                      Semester
-                    </label>
-                    <input
-                      type="text"
-                      id={`member${index + 1}-semester`}
-                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                      required
-                      onChange={(e) => handleMemberChange(index, e)}
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label
-                      htmlFor={`member${index + 1}-college`}
-                      className="block text-white"
-                    >
-                      College Name
-                    </label>
-                    <input
-                      type="text"
-                      id={`member${index + 1}-college`}
-                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                      required
-                      onChange={(e) => handleMemberChange(index, e)}
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label
-                      htmlFor={`member${index + 1}-role`}
-                      className="block text-white"
-                    >
-                      Role
-                    </label>
-                    <input
-                      type="text"
-                      id={`member${index + 1}-role`}
-                      className="w-full px-3 py-2 border rounded-md text-white bg-gray-700"
-                      required
-                      onChange={(e) => handleMemberChange(index, e)}
-                    />
                   </div>
                 </div>
-              </div>
-            ))}
 
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full text-center"
-            >
-              Let's Hack
-            </button>
+                {/* Submit Button */}
+                <button type="submit" className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                  Let's Hack
+                </button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
     </div>
   );
 };
+
 export default RegistrationForm;

@@ -2,3 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* styles.css or your stylesheet */
+aside {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1); /* Adjust opacity as needed */
+    border-radius: 10px; /* Optional for rounded corners */
+  }
+  
+  .navbar {
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.3); /* Adjust opacity as needed */
+  }
+  

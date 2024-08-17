@@ -5,7 +5,7 @@ import LandingPage from "./components/LandingPage";
 const Home = () => {
   return (
     <>
-    <Navbar/>
+    {/* <Navbar/> */}
       <LandingPage />
     </>
   );
