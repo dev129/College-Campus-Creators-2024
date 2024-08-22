@@ -1,4 +1,4 @@
-# Creative Minds 2024
+# College Campus Creators (hack the future: Campus Edition)
 
 Welcome to the Creative Minds 2024 project by Debuggers Club in collaboration with the Innovative Student Council! This repository contains the source code for our innovative web application designed to showcase the talents and creativity of students.
 
