@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     "question": "How do I upload my code on github ?",
-    "answer": "Uploading code on github will be told in the offline session (September 30th)"
+    "answer": "Uploading code on github will be told in the later session."
   },
   {
     "question": "Is there a specific format for submitting my project?",
@@ -25,15 +25,11 @@ const faqs = [
   },
   {
     "question": "What shall be the theme of my project ?",
-    "answer": "Create projects that are innovative, user-friendly, and demonstrate your creativity and are useful for colleges . Please ensure that your project adheres to the hackathon's guidelines and values."
+    "answer": "Anything!  You can create anything which benefits colleges from a simple web app to robots. Please ensure that your project adheres to the hackathon's guidelines and values."
   },
   {
     "question": "How will the projects be judged?",
     "answer": "Projects will be evaluated based on creativity, functionality, user experience, and adherence to the hackathon guidelines. A panel of judges will review each submission, and winners will be announced at the end of the event."
-  },
-  {
-    "question": "What resources are available to help me during the hackathon?",
-    "answer": "We will provide access to a variety of resources, including tutorials, documentation, and links to helpful tools. Additionally, you can connect with mentors and other participants for guidance and support."
   },
   {
     "question": "Can I participate if I am a beginner ?",

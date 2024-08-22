@@ -4,7 +4,7 @@ import Link from "next/link";
 import Navbar from "@/app/components/Navbar";
 import Medal from "@/app/components/Medal";
 import FAQ from "@/app/components/FAQ";
-
+import hackathon2 from "@/public/hack-removebg-preview.png"
 const HackathonPage = () => {
   return (
     <>
@@ -27,7 +27,7 @@ const HackathonPage = () => {
               </div>
               <div className="md:w-1/2 relative h-64 w-full">
                 <Image
-                  src="/hack-removebg-preview.png"
+                  src={hackathon2}
                   layout="fill"
                   objectFit="cover"
                   alt="Hackathon Event"
@@ -72,9 +72,9 @@ const HackathonPage = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {[
-                { number: 1, title: "Register", content: "Sign up before the deadline: Aug 24th (Beginners) or Sep 14th (Advanced)" },
-                { number: 2, title: "Form Teams", content: "Create diverse teams with members from different branches" },
-                { number: 3, title: "Ideate", content: "Brainstorm and present your ideas on Aug 25th (Beginners) or Sep 15th (All)" },
+                { number: 1, title: "Form Teams", content: "Create diverse teams with members from different branches" },
+                { number: 2, title: "Register", content: "Sign up before the deadline: Aug 24th (Beginners) or Sep 14th (Advanced)" },
+                { number: 3, title: "Ideate", content: "Brainstorm and present your ideas on Sep 15th (Beginners) & Sep 25th (All)" },
                 { number: 4, title: "Hack", content: "Finalists bring their A-game to build solutions on September 30th" }
               ].map((step, index) => (
                 <div key={index} className="text-center">
@@ -97,7 +97,7 @@ const HackathonPage = () => {
                 { icon: "🤖", theme: "AI for Education", description: "Leverage AI to enhance learning experiences" },
                 { icon: "🏥", theme: "HealthTech Innovation", description: "Create solutions for student health and wellness" },
                 { icon: "🎨", theme: "Creative Arts & Tech", description: "Blend technology with arts for campus enrichment" },
-                { icon: "🔬", theme: "Science & Engineering", description: "Tackle complex problems with cutting-edge tech" },
+                { icon: "🔬", theme: "Science & Engineering", description: "Tackle complex problems with cutting-edge tech in the field  of engineering" },
                 { icon: "🌐", theme: "Smart Campus", description: "IoT and digital solutions for a connected campus" }
               ].map((item, index) => (
                 <div key={index} className="text-center p-4 bg-gray-800 rounded-xl">
@@ -114,7 +114,7 @@ const HackathonPage = () => {
 
           {/* Prizes */}
           <section className="mb-16 bg-gray-900 p-8 rounded-3xl shadow-lg hover:shadow-yellow-400 transition-all duration-300">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-pink-400 text-center divider divider-accent">Prizes</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-pink-400 text-center divider divider-accent pb-5">Prizes</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 { medal: "Gold", place: "1st Place", prize: "Goodies, Vouchers & Winner Certificate" },

@@ -4,13 +4,14 @@ import Image from "next/image";
 import contactUsHackathonPoster from "@/public/hackathon.png";
 import React, { useEffect, useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
+import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import { FaPaperPlane, FaRocket, FaLightbulb, FaQuestionCircle } from "react-icons/fa";
 
 const Page = () => {
   const [state, handleSubmit, reset] = useForm("xgvwkpdn");
   const [formSubmitted, setFormSubmitted] = useState(false);
-
+  const router=useRouter();
   const onSubmit = async (event) => {
     event.preventDefault();
     await handleSubmit(event);
@@ -36,6 +37,8 @@ const Page = () => {
         hideClass: {
           popup: 'animate__animated animate__fadeOutUp'
         }
+      }).then(() => {
+        router.push('/'); 
       });
       setFormSubmitted(false);
     }

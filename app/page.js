@@ -4,10 +4,9 @@ import { Analytics } from "@vercel/analytics/react";
 import LandingPage from "./components/LandingPage";
 const Home = () => {
   return (
-    <>
-    {/* <Navbar/> */}
+    
       <LandingPage />
-    </>
+    
   );
 };
 

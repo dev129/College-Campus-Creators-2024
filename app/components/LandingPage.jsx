@@ -25,7 +25,7 @@ const LandingPage = () => {
   <p className="text-xl md:text-2xl font-medium italic text-blue-200">
      Debuggers Club & IIC presents:
   </p>
-  <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-500 drop-shadow-lg">
+  <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-500 drop-shadow-lg ">
     College Campus Creators
   </h1>
   <p className="text-2xl md:text-3xl font-light italic text-gray-300 leading-relaxed">
