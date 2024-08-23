@@ -33,7 +33,7 @@ const Schedule = () => {
   return (
     <div className="bg-gradient-to-r from-blue-600 to-blue-900 min-h-screen pt-10 px-4 sm:px-6 lg:px-8">
       <h1 className="text-4xl sm:text-6xl font-extrabold text-white mb-10 text-center">
-        TimeLine 
+        Timeline 
       </h1>
       
       <div className="max-w-3xl mx-auto bg-gray-800 bg-opacity-50 rounded-lg shadow-xl p-6 sm:p-10">

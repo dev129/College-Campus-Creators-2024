@@ -11,8 +11,8 @@ const HackathonPage = () => {
       <Navbar />
       <main className="bg-gradient-to-r from-blue-600 to-blue-900 min-h-screen text-white">
         <div className="container mx-auto px-4 py-16">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-200 to-blue-100 mb-10"
-            style={{ textShadow: '0 0 20px rgba(0,0,0,0.5)', lineHeight: '1.1', padding: '0.25em' }}>
+          <h1 className="text-5xl text-center md:text-7xl font-extrabold text-transparent bg-clip-text text-white mb-10"
+            >
             Hack the Future: Campus Edition
           </h1>
           {/* What the event is about */}
@@ -74,7 +74,7 @@ const HackathonPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {[
                 { number: 1, title: "Form Teams", content: "Create diverse teams with members from different branches" },
-                { number: 2, title: "Register", content: "Sign up before the deadline: Sep 4th (Beginners) or Sep 10th (Advanced)" },
+                { number: 2, title: "Register", content: "Sign up before  Sep 10th" },
                 { number: 3, title: "Ideate", content: "Brainstorm and present your ideas on Sep 15th (Beginners) & Sep 25th (All)" },
                 { number: 4, title: "Hack", content: "Finalists bring their A-game to build solutions on September 30th" }
               ].map((step, index) => (
@@ -115,7 +115,7 @@ const HackathonPage = () => {
 
           {/* Prizes */}
           <section className="mb-16 bg-gray-900 p-8 rounded-3xl shadow-lg hover:shadow-yellow-400 transition-all duration-300">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-pink-400 text-center divider divider-accent pb-5">Prizes</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-green-400 text-center divider divider-accent pb-5">Prizes</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 { medal: "Gold", place: "1st Place", prize: "Goodies, Vouchers & Winner Certificate" },

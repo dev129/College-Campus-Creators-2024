@@ -23,7 +23,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navbarClasses = `w-full p-1 transition-all duration-300 ${
+  const navbarClasses = `w-full h-16 p-1 transition-all duration-300 ${
     scrolled
       ? "bg-gradient-to-r from-blue-600 to-blue-900 shadow-lg"
       : "bg-gradient-to-r from-blue-500 to-blue-800"
@@ -41,10 +41,10 @@ const Navbar = () => {
     <div>
       {/* Navbar */}
       <div className={navbarClasses}>
-        <div className="container mx-auto flex items-center justify-between">
+        <div className="container mx-auto flex items-center justify-between h-full relative">
           {/* Hamburger menu icon */}
           <motion.div
-            className="flex items-center ml-4 cursor-pointer"
+            className="flex items-center cursor-pointer z-10"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={toggleSidebar}
@@ -53,40 +53,36 @@ const Navbar = () => {
           </motion.div>
 
           {/* Centered Logo and Title */}
-          <div className="flex items-center justify-center space-x-2 flex-grow">
-            <Image
-              src="/iic_logo.png"
-              height={40}
-              width={40}
-              alt="IIC Logo"
-              className="hidden lg:block"
-              priority
-            />
-            <span className="font-extrabold text-3xl hidden lg:block text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">
-              X
-            </span>
-            <Image
-              src="/background2.webp"
-              height={80}
-              width={80}
-              alt="Logo"
-              className="hidden lg:block"
-              priority
-            />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex items-center space-x-2">
+              <Image
+                src="/iic_logo.png"
+                height={40}
+                width={40}
+                alt="IIC Logo"
+                className="hidden lg:block"
+                priority
+              />
+              <span className="font-extrabold text-3xl hidden lg:block text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">
+                X
+              </span>
+              <Image
+                src="/background2.webp"
+                height={80}
+                width={80}
+                alt="Logo"
+                className="hidden lg:block"
+                priority
+              />
+            </div>
           </div>
 
           {/* CTA Button */}
-          <Link href="/pages/Registration" passHref>
-            <motion.div
-              className="relative overflow-hidden group mr-4"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="relative z-10 bg-white text-blue-900 px-6 py-2 rounded-lg  font-bold hover:text-red-600 transition-colors duration-300 hidden lg:flex ">
-                Register Now
-              </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </motion.div>
+          <Link href="/pages/Registration" passHref className="hover:scale-110 transition duration-300 delay-150 hover:delay-300">
+            <span className="relative z-10 bg-white  text-blue-900 px-6 py-2 rounded-lg font-bold  transition-colors duration-300 hidden lg:flex">
+              Register Now
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
           </Link>
         </div>
       </div>
