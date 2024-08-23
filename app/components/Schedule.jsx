@@ -31,9 +31,9 @@ const TimelineItem = ({ date, title, description, latest, type }) => (
 
 const Schedule = () => {
   return (
-    <div className="bg-gradient-to-r from-blue-600 to-indigo-900 min-h-screen pt-10 px-4 sm:px-6 lg:px-8">
+    <div className="bg-gradient-to-r from-blue-600 to-blue-900 min-h-screen pt-10 px-4 sm:px-6 lg:px-8">
       <h1 className="text-4xl sm:text-6xl font-extrabold text-white mb-10 text-center">
-        TIMELINE
+        TimeLine 
       </h1>
       
       <div className="max-w-3xl mx-auto bg-gray-800 bg-opacity-50 rounded-lg shadow-xl p-6 sm:p-10">
@@ -45,7 +45,7 @@ const Schedule = () => {
             latest={true}
           />
           <TimelineItem 
-            date="September 12, 2024"
+            date="September 10, 2024"
             title="Registration Closes"
             description="Last day to register your team. Don't miss out!"
           />
@@ -56,7 +56,7 @@ const Schedule = () => {
             type="Beginners"
           />
           <TimelineItem 
-            date="September 27, 2024"
+            date="September 25, 2024"
             title="Final Team Idea Presentation"
             description="All teams (Beginners and Advanced) present their refined ideas for final selection."
             type="All Teams"

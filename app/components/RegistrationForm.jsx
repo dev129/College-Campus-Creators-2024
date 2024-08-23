@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { supabase } from '../supabaseConfig.js';
 import Swal from 'sweetalert2';
+import Navbar from './Navbar.jsx';
 
 const RegistrationForm = () => {
   const [teamSize, setTeamSize] = useState(2);
@@ -106,17 +107,18 @@ const RegistrationForm = () => {
     }
   };
 
-  return (
-    <div className="bg-gradient-to-r from-blue-500 to-blue-900 min-h-screen">
+  return (<>
+      <Navbar/>
+    <div className="bg-gradient-to-r from-blue-600 to-blue-900 min-h-screen">
       <div className="min-h-screen p-4 sm:p-8 backdrop-blur-xl">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
             <div className="bg-gray-800 shadow-2xl rounded-lg overflow-hidden">
-              <div className="bg-blue-600 p-6 text-white">
+              <div className="bg-blue-500 p-6 text-white">
                 <h2 className="text-3xl sm:text-4xl font-bold text-center">
                   Hack the Future: Registration
                 </h2>
-                <p className="text-center mt-2 text-blue-200">
+                <p className="text-center mt-2 text-white">
                   Join the innovation revolution!
                 </p>
               </div>
@@ -201,7 +203,7 @@ const RegistrationForm = () => {
                
 
                 {/* Submit Button */}
-                <button type="submit" className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <button type="submit" className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                   Let's Hack
                 </button>
               </div>
@@ -210,6 +212,7 @@ const RegistrationForm = () => {
         </div>
       </div>
     </div>
+  </>
   );
 };
 

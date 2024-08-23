@@ -4,10 +4,10 @@ import React from 'react'
 
 const pages = () => {
   return (
-    <div className>
-    <Navbar/>
+    <>
+    {/* <Navbar/> */}
     <RegistrationForm/>
-    </div>
+    </>
   )
 }
 

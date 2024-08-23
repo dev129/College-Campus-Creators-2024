@@ -9,9 +9,10 @@ const HackathonPage = () => {
   return (
     <>
       <Navbar />
-      <main className="bg-gradient-to-r from-blue-600 to-indigo-900 min-h-screen text-white">
+      <main className="bg-gradient-to-r from-blue-600 to-blue-900 min-h-screen text-white">
         <div className="container mx-auto px-4 py-16">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-center mb-7 text-white bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-200 to-blue-100 mb-10"
+            style={{ textShadow: '0 0 20px rgba(0,0,0,0.5)', lineHeight: '1.1', padding: '0.25em' }}>
             Hack the Future: Campus Edition
           </h1>
           {/* What the event is about */}
@@ -73,7 +74,7 @@ const HackathonPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {[
                 { number: 1, title: "Form Teams", content: "Create diverse teams with members from different branches" },
-                { number: 2, title: "Register", content: "Sign up before the deadline: Aug 24th (Beginners) or Sep 14th (Advanced)" },
+                { number: 2, title: "Register", content: "Sign up before the deadline: Sep 4th (Beginners) or Sep 10th (Advanced)" },
                 { number: 3, title: "Ideate", content: "Brainstorm and present your ideas on Sep 15th (Beginners) & Sep 25th (All)" },
                 { number: 4, title: "Hack", content: "Finalists bring their A-game to build solutions on September 30th" }
               ].map((step, index) => (
@@ -107,7 +108,7 @@ const HackathonPage = () => {
                 </div>
               ))}
             </div>
-            <div className="text-4xl md:text-6xl mt-12 text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+            <div className="text-4xl md:text-6xl mt-12 text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600" style={{lineHeight:'1.1'}}>
             Have your own idea? Go for it!
           </div>
           </section>
@@ -142,10 +143,10 @@ const HackathonPage = () => {
           </section>
 
           <div className="text-center">
-            <h2 className="text-3xl md:text-5xl text-white font-bold mb-6">Ready to Innovate?</h2>
+            <h2 className="text-3xl md:text-5xl text-white font-bold mb-6">You still need reasons to participate ?</h2>
             <Link href="/pages/Registration">
               <button className="bg-blue-950 hover:bg-blue-300 hover:text-black text-white font-bold py-3 px-6 rounded-xl text-xl transition-colors duration-300">
-                Register Now
+                Register Now !
               </button>
             </Link>
           </div>
