@@ -19,25 +19,19 @@ const page = () => {
     headCollege: "",
     headPhone: "",
     headGithub: "",
-    members: Array(1).fill({
-      name: "",
-      branch: "",
-      semester: "",
-      college: "",
-      role: "",
-    }),
+    members: [],
   });
 
   useEffect(() => {
     setFormData((prevState) => ({
       ...prevState,
-      members: Array(teamSize - 1).fill({
+      members: Array(teamSize - 1).fill().map(() => ({
         name: "",
         branch: "",
         semester: "",
         college: "",
         role: "",
-      }),
+      })),
     }));
   }, [teamSize]);
 
@@ -51,13 +45,12 @@ const page = () => {
 
   const handleMemberChange = (index, e) => {
     const { id, value } = e.target;
-    const members = [...formData.members];
     const memberKey = id.split("-")[1];
-    members[index] = { ...members[index], [memberKey]: value };
-    setFormData((prevState) => ({
-      ...prevState,
-      members,
-    }));
+    setFormData((prevState) => {
+      const newMembers = [...prevState.members];
+      newMembers[index] = { ...newMembers[index], [memberKey]: value };
+      return { ...prevState, members: newMembers };
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -84,7 +77,7 @@ const page = () => {
         head_college: headCollege,
         head_phone: headPhone,
         head_github: headGithub,
-        members: members.map((member, index) => ({
+        members: members.map((member) => ({
           name: member.name,
           branch: member.branch,
           semester: member.semester,
@@ -108,7 +101,7 @@ const page = () => {
         confirmButtonText: "Cool, Let's Hack",
         confirmButtonColor: "#06166A",
       }).then(() => {
-        router.push("/"); // Redirect to home page
+        router.push("/");
       });
     }
   };
@@ -131,7 +124,6 @@ const page = () => {
                 </div>
 
                 <div className="p-6 space-y-8">
-                  {/* Team Details Section */}
                   <section className="bg-gray-700 p-6 rounded-lg shadow-inner">
                     <h3 className="text-2xl font-semibold mb-4 text-blue-300">
                       Team Details
@@ -194,7 +186,6 @@ const page = () => {
                     </div>
                   </section>
 
-                  {/* Head Details Section */}
                   <section className="bg-gray-700 p-6 rounded-lg shadow-inner">
                     <h3 className="text-2xl font-semibold mb-4 text-green-300">
                       Head Details
@@ -226,7 +217,6 @@ const page = () => {
                     </div>
                   </section>
 
-                  {/* Agreement Checkbox */}
                   <div className="relative flex items-start">
                     <input
                       type="checkbox"
@@ -238,13 +228,13 @@ const page = () => {
                       htmlFor="agree"
                       className="tooltip tooltip-right ml-2 text-black"
                       data-tip="
-• The details entered by the head shall be final and verified and cannot be changed later.
-• Participation in the event is subject to a “per-team” basis, i.e., one person is not allowed to be part of more than one team.
-• Teams should strictly not use any proprietary software in their code, Ai assistant like chatGPT, claude can be used .
-• Each team can submit only one entry for the event.
-• A team can have 2 to 4 members.
-• Any participant found annoying judges or organizers shall lead to disqualification of the whole team.
-• Violating any terms and conditions shall lead to disqualification of whole team"
+- The details entered by the head shall be final and verified and cannot be changed later.
+- Participation in the event is subject to a per-team basis, i.e., one person is not allowed to be part of more than one team.
+- Teams should strictly not use any proprietary software in their code, Ai assistant like chatGPT, claude can be used .
+- Each team can submit only one entry for the event.
+- A team can have 2 to 4 members.
+- Any participant found annoying judges or organizers shall lead to disqualification of the whole team.
+- Violating any terms and conditions shall lead to disqualification of whole team"
                     >
                       I agree to the
                       <span className="text-white underline ml-1">
@@ -253,7 +243,6 @@ const page = () => {
                     </label>
                   </div>
 
-                  {/* WhatsApp Group Checkbox */}
                   <div className="flex items-start">
                     <input
                       type="checkbox"
@@ -272,23 +261,16 @@ const page = () => {
                     </label>
                   </div>
 
-                  {/* Member Details Sections */}
                   {[...Array(teamSize - 1)].map((_, index) => (
                     <section
                       key={index}
                       className="bg-gray-700 p-6 rounded-lg shadow-inner"
                     >
                       <h3 className="text-2xl font-semibold mb-4 text-purple-300">
-                        Member {index + 1} Details
+                        Member {index + 2} Details
                       </h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {[
-                          "Name",
-                          "Branch",
-                          "Semester",
-                          "College Name",
-                          "Role",
-                        ].map((field) => (
+                        {["Name", "Branch", "Semester", "College Name", "Role"].map((field) => (
                           <div key={field}>
                             <label
                               htmlFor={`member${index + 1}-${field.toLowerCase()}`}
@@ -302,7 +284,7 @@ const page = () => {
                               className="w-full px-3 py-2 border rounded-md text-gray-900 bg-white focus:ring-2 focus:ring-purple-400"
                               placeholder={`Enter ${field.toLowerCase()}`}
                               required
-                              value={formData.members[index][field.toLowerCase()]}
+                              value={formData.members[index]?.[field.toLowerCase()] || ""}
                               onChange={(e) => handleMemberChange(index, e)}
                             />
                           </div>
@@ -311,7 +293,6 @@ const page = () => {
                     </section>
                   ))}
 
-                  {/* Submit Button */}
                   <button
                     type="submit"
                     className="w-full bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
