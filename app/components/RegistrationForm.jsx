@@ -235,15 +235,15 @@ const RegistrationForm = () => {
 • Teams should strictly not use any proprietary software in their code.
 • Each team can submit only one entry for the event.
 • A team can have 2 to 4 members.
-• Any participant found annoying judges or organizers shall lead to disqualification of the whole team." htmlFor="agree" className=" tooltip tooltip-right ml-2 text-black">
+• Any participant found annoying judges or organizers shall lead to disqualification of the whole team.
+• Violating any terms and conditions shall lead to disqulification of whole team" htmlFor="agree" className=" tooltip tooltip-right ml-2 text-black">
                       I agree to the
                       <span
                           target="_blank"
                           className="text-white underline ml-1"
                         >
-                          Terms and Conditions
+                          Terms and Conditions.
                         </span>
-                        {''} violating which shall lead to disqualificationof my team.
                     </label>
                   </div>
 
