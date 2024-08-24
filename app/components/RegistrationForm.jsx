@@ -84,7 +84,13 @@ const RegistrationForm = () => {
         head_college: headCollege,
         head_phone: headPhone,
         head_github: headGithub,
-        members,
+        members: members.map((member, index) => ({
+          name: member.name,
+          branch: member.branch,
+          semester: member.semester,
+          college: member.college,
+          role: member.role,
+        })),
       },
     ]);
 
@@ -145,6 +151,7 @@ const RegistrationForm = () => {
                             className="w-full px-3 py-2 border rounded-md text-gray-900 bg-white focus:ring-2 focus:ring-blue-400"
                             placeholder="Enter your team name"
                             required
+                            value={formData.teamName}
                             onChange={handleChange}
                           />
                         </div>
@@ -161,6 +168,7 @@ const RegistrationForm = () => {
                             className="w-full px-3 py-2 border rounded-md text-gray-900 bg-white focus:ring-2 focus:ring-blue-400"
                             placeholder="Describe your team idea"
                             required
+                            value={formData.teamIdea}
                             onChange={handleChange}
                           />
                         </div>
@@ -176,9 +184,7 @@ const RegistrationForm = () => {
                           id="teamSize"
                           className="w-full px-3 py-2 border rounded-md text-gray-900 bg-white focus:ring-2 focus:ring-blue-400"
                           value={teamSize}
-                          onChange={(e) =>
-                            setTeamSize(parseInt(e.target.value))
-                          }
+                          onChange={(e) => setTeamSize(parseInt(e.target.value))}
                         >
                           <option value={2}>2</option>
                           <option value={3}>3</option>
@@ -195,26 +201,24 @@ const RegistrationForm = () => {
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {[
-                        "Name",
-                        "Branch",
-                        "Semester",
-                        "College Name",
-                        "Phone Number",
-                        "GitHub Profile Link",
-                      ].map((field) => (
-                        <div key={field}>
-                          <label
-                            htmlFor={`head${field.replace(/\s+/g, "")}`}
-                            className="block text-white mb-2"
-                          >
-                            {field}
+                        { label: "Name", id: "headName", type: "text" },
+                        { label: "Branch", id: "headBranch", type: "text" },
+                        { label: "Semester", id: "headSemester", type: "text" },
+                        { label: "College Name", id: "headCollege", type: "text" },
+                        { label: "Phone Number", id: "headPhone", type: "tel" },
+                        { label: "GitHub Profile Link", id: "headGithub", type: "url" },
+                      ].map(({ label, id, type }) => (
+                        <div key={id}>
+                          <label htmlFor={id} className="block text-white mb-2">
+                            {label}
                           </label>
                           <input
-                            type={field === "Phone Number" ? "tel" : "text"}
-                            id={`head${field.replace(/\s+/g, "")}`}
+                            type={type}
+                            id={id}
                             className="w-full px-3 py-2 border rounded-md text-gray-900 bg-white focus:ring-2 focus:ring-green-400"
-                            placeholder={`Enter ${field.toLowerCase()}`}
+                            placeholder={`Enter ${label.toLowerCase()}`}
                             required
+                            value={formData[id]}
                             onChange={handleChange}
                           />
                         </div>
@@ -222,6 +226,7 @@ const RegistrationForm = () => {
                     </div>
                   </section>
 
+                  {/* Agreement Checkbox */}
                   <div className="relative flex items-start">
                     <input
                       type="checkbox"
@@ -229,24 +234,26 @@ const RegistrationForm = () => {
                       className="form-checkbox h-5 w-5 text-blue-600"
                       required
                     />
-                    <label  data-tip="
+                    <label
+                      htmlFor="agree"
+                      className="tooltip tooltip-right ml-2 text-black"
+                      data-tip="
 • The details entered by the head shall be final and verified and cannot be changed later.
 • Participation in the event is subject to a “per-team” basis, i.e., one person is not allowed to be part of more than one team.
-• Teams should strictly not use any proprietary software in their code.
+• Teams should strictly not use any proprietary software in their code, Ai assistant like chatGPT, claude can be used .
 • Each team can submit only one entry for the event.
 • A team can have 2 to 4 members.
 • Any participant found annoying judges or organizers shall lead to disqualification of the whole team.
-• Violating any terms and conditions shall lead to disqulification of whole team" htmlFor="agree" className=" tooltip tooltip-right ml-2 text-black">
+• Violating any terms and conditions shall lead to disqualification of whole team"
+                    >
                       I agree to the
-                      <span
-                          target="_blank"
-                          className="text-white underline ml-1"
-                        >
-                          Terms and Conditions.
-                        </span>
+                      <span className="text-white underline ml-1">
+                        Terms and Conditions.
+                      </span>
                     </label>
                   </div>
 
+                  {/* WhatsApp Group Checkbox */}
                   <div className="flex items-start">
                     <input
                       type="checkbox"
@@ -256,14 +263,8 @@ const RegistrationForm = () => {
                     />
                     <label htmlFor="whatsapp" className="ml-2 text-black">
                       I have joined the official
-                      <Link
-                        href="https://chat.whatsapp.com/IHykNHJwQnh8Lo3hwl3Dr5"
-                        passHref
-                      >
-                        <span
-                          target="_blank"
-                          className="text-white underline ml-1"
-                        >
+                      <Link href="https://chat.whatsapp.com/IHykNHJwQnh8Lo3hwl3Dr5" passHref>
+                        <span className="text-white underline ml-1">
                           WhatsApp group
                         </span>
                       </Link>
@@ -290,9 +291,7 @@ const RegistrationForm = () => {
                         ].map((field) => (
                           <div key={field}>
                             <label
-                              htmlFor={`member${
-                                index + 1
-                              }-${field.toLowerCase()}`}
+                              htmlFor={`member${index + 1}-${field.toLowerCase()}`}
                               className="block text-white mb-2"
                             >
                               {field}
@@ -303,6 +302,7 @@ const RegistrationForm = () => {
                               className="w-full px-3 py-2 border rounded-md text-gray-900 bg-white focus:ring-2 focus:ring-purple-400"
                               placeholder={`Enter ${field.toLowerCase()}`}
                               required
+                              value={formData.members[index][field.toLowerCase()]}
                               onChange={(e) => handleMemberChange(index, e)}
                             />
                           </div>

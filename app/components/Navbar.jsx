@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { HiMenu, HiX } from "react-icons/hi";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,14 +42,12 @@ const Navbar = () => {
       <div className={navbarClasses}>
         <div className="container mx-auto flex items-center justify-between h-full relative">
           {/* Hamburger menu icon */}
-          <motion.div
+          <div
             className="flex items-center cursor-pointer z-10"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
             onClick={toggleSidebar}
           >
             {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
-          </motion.div>
+          </div>
 
           {/* Centered Logo and Title */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -78,62 +75,46 @@ const Navbar = () => {
           </div>
 
           {/* CTA Button */}
-          <Link href="/pages/Registration" passHref className="hover:scale-110 transition duration-300 delay-150 hover:delay-300">
-            <span className="relative z-10 bg-white  text-blue-900 px-6 py-2 rounded-lg font-bold  transition-colors duration-300 hidden lg:flex">
+          <Link href="/pages/Registration" passHref>
+            <span className="relative z-10 bg-white text-blue-900 px-6 py-2 rounded-lg font-bold transition-colors duration-300 hidden lg:flex">
               Register Now
             </span>
-            <span className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
           </Link>
         </div>
       </div>
 
       {/* Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-30 bg-black bg-opacity-50"
-            onClick={toggleSidebar}
-          ></motion.div>
-        )}
-      </AnimatePresence>
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black bg-opacity-50"
+          onClick={toggleSidebar}
+        ></div>
+      )}
 
       {/* Sidebar Menu */}
-      <motion.div
-        className="text-white fixed left-0 top-0 w-64 h-full bg-gradient-to-b from-blue-600 to-blue-900 shadow-lg z-40"
-        initial={{ x: "-100%" }}
-        animate={{ x: isOpen ? 0 : "-100%" }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      <div
+        className={`text-white fixed left-0 top-0 w-64 h-full bg-gradient-to-b from-blue-600 to-blue-900 shadow-lg z-40 ${
+          isOpen ? 'translate-x-0' : '-translate-x-full'
+        } transition-transform duration-300`}
       >
         <div className="flex justify-between items-center p-4 border-b border-blue-400">
           <h2 className="font-bold text-xl">Menu</h2>
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={toggleSidebar}
-          >
+          <div onClick={toggleSidebar}>
             <HiX size={28} />
-          </motion.div>
+          </div>
         </div>
         <ul className="p-4 space-y-2">
           {menuItems.map((item, index) => (
-            <motion.li
-              key={index}
-              whileHover={{ scale: 1.05, x: 10 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <li key={index}>
               <Link href={item.href} passHref>
                 <span className="block py-2 px-4 hover:bg-blue-400 hover:text-white rounded-lg transition-colors duration-300">
                   {item.label}
                 </span>
               </Link>
-            </motion.li>
+            </li>
           ))}
         </ul>
-      </motion.div>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import Navbar from "@/app/components/Navbar";
 import Medal from "@/app/components/Medal";

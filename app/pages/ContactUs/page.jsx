@@ -1,6 +1,6 @@
 "use client";
 import Navbar from "@/app/components/Navbar";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import contactUsHackathonPoster from "@/public/hackathon.png";
 import React, { useEffect, useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
