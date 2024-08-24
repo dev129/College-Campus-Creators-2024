@@ -1,5 +1,4 @@
 // app/schedule/page.jsx
-import Image from 'next/image';
 
 const TimelineItem = ({ date, title, description, latest, type }) => (
   <li className="mb-10 ms-6">
@@ -31,11 +30,23 @@ const TimelineItem = ({ date, title, description, latest, type }) => (
 
 const Schedule = () => {
   return (
+    
     <div className="bg-gradient-to-r from-blue-600 to-blue-900 min-h-screen pt-10 px-4 sm:px-6 lg:px-8">
+      
       <h1 className="text-4xl sm:text-6xl font-extrabold text-white mb-10 text-center">
         Timeline 
       </h1>
-      
+      <div className="mt-10 text-center mb-5">
+        <p className="text-xl text-white mb-4">Two Tracks for Participants:</p>
+        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <div className="bg-green-100 text-green-800 px-4 py-2 rounded-full">
+            Beginners: New to hackathons, receive guidance and mentorship
+          </div>
+          <div className="bg-purple-100 text-purple-800 px-4 py-2 rounded-full">
+            Advanced: Experienced in project development
+          </div>
+        </div>
+      </div>
       <div className="max-w-3xl mx-auto bg-gray-800 bg-opacity-50 rounded-lg shadow-xl p-6 sm:p-10">
         <ol className="relative border-s border-gray-200 dark:border-gray-700">
           <TimelineItem 
@@ -69,17 +80,7 @@ const Schedule = () => {
         </ol>
       </div>
       
-      <div className="mt-10 text-center">
-        <p className="text-xl text-white mb-4">Two Tracks for Participants:</p>
-        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-          <div className="bg-green-100 text-green-800 px-4 py-2 rounded-full">
-            Beginners: New to hackathons, receive guidance and mentorship
-          </div>
-          <div className="bg-purple-100 text-purple-800 px-4 py-2 rounded-full">
-            Advanced: Experienced in project development
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 };
