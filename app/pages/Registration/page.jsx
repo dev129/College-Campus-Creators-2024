@@ -90,8 +90,10 @@ const page = () => {
     if (error) {
       Swal.fire({
         title: "Oops!",
-        text: "Sorry, your team couldn't be registered.",
+        text: "Sorry, your team couldn't be registered. Please send your details from contact us page ",
         icon: "error",
+      }).then(()=>{
+        router.push("/pages/ContactUs")
       });
     } else {
       Swal.fire({

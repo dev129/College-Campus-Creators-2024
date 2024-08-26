@@ -5,10 +5,11 @@ import { TbTimelineEvent } from "react-icons/tb";
 import { FaInfo } from "react-icons/fa";
 import { RiContactsBook3Fill } from "react-icons/ri";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-
+import { Analytics } from "@vercel/analytics/react"
 const LandingPage = () => {
   return (
     <>
+    <Analytics/>
       <SpeedInsights />
       <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-black via-blue-400 to-blue-900">
         <div className="absolute inset-0">
