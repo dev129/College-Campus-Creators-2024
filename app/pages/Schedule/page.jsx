@@ -1,3 +1,4 @@
+"use server";
 import Navbar from "@/app/components/Navbar";
 import React from "react";
 
@@ -17,7 +18,7 @@ const TimelineItem = ({ date, title, description, latest, type }) => (
     <h3 className="flex items-center mb-1 text-lg font-semibold text-white">
       {title}
       {latest && (
-        <span className="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ms-3">
+        <span className="animate-pulse bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ms-3">
           Latest
         </span>
       )}
@@ -33,12 +34,10 @@ const TimelineItem = ({ date, title, description, latest, type }) => (
         </span>
       )}
     </h3>
-    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+    <time className="block mb-2 text-sm font-semibold leading-none text-white dark:text-white">
       {date}
     </time>
-    <p className="mb-4 text-base font-normal text-gray-200">
-      {description}
-    </p>
+    <p className="mb-4 text-base font-normal text-gray-200">{description}</p>
   </li>
 );
 
@@ -56,7 +55,7 @@ const Page = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <div className="bg-green-100 text-green-800 px-4 py-2 rounded-full">
-              Beginners: New to hackathons, receive guidance and mentorship
+              Beginners: New to hackathons, receive guidance and mentorship 
             </div>
             <div className="bg-purple-100 text-purple-800 px-4 py-2 rounded-full">
               Advanced: Experienced in project development
@@ -78,13 +77,13 @@ const Page = () => {
             />
             <TimelineItem
               date="September 15, 2024"
-              title="First Team Idea Presentation"
+              title="Beginners Team Idea Presentation (Online)"
               description="Beginner teams present their initial ideas and receive guidance from mentors."
               type="Beginners"
             />
             <TimelineItem
               date="September 25, 2024"
-              title="Final Team Idea Presentation"
+              title="Final Team Idea Presentation (Online)"
               description="All teams (Beginners and Advanced) present their refined ideas for final selection."
               type="All Teams"
             />
@@ -101,4 +100,3 @@ const Page = () => {
 };
 
 export default Page;
-  

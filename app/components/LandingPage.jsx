@@ -1,6 +1,7 @@
-import Image from "next/legacy/image";
+"use server";
+import Image from "next/image";
 import Link from "next/link";
-import {  FaRegClipboard } from "react-icons/fa";
+import { FaRegClipboard } from "react-icons/fa";
 import { TbTimelineEvent } from "react-icons/tb";
 import { FaInfo } from "react-icons/fa6";
 import { RiContactsBook3Fill } from "react-icons/ri";

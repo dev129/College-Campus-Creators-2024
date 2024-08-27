@@ -1,17 +1,17 @@
 "use client";
 import Navbar from "@/app/components/Navbar";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import contactUsHackathonPoster from "@/public/hackathon.png";
 import React, { useEffect, useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-import { FaPaperPlane} from "react-icons/fa";
+import { FaPaperPlane } from "react-icons/fa";
 
 const Page = () => {
   const [state, handleSubmit, reset] = useForm("xgvwkpdn");
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const router=useRouter();
+  const router = useRouter();
   const onSubmit = async (event) => {
     event.preventDefault();
     await handleSubmit(event);
@@ -29,16 +29,16 @@ const Page = () => {
         icon: "success",
         confirmButtonText: "Awesome!",
         confirmButtonColor: "#4F46E5",
-        background: '#1F2937',
-        color: '#FFFFFF',
+        background: "#1F2937",
+        color: "#FFFFFF",
         showClass: {
-          popup: 'animate__animated animate__fadeInDown'
+          popup: "animate__animated animate__fadeInDown",
         },
         hideClass: {
-          popup: 'animate__animated animate__fadeOutUp'
-        }
+          popup: "animate__animated animate__fadeOutUp",
+        },
       }).then(() => {
-        router.push('/'); 
+        router.push("/");
       });
       setFormSubmitted(false);
     }
@@ -72,7 +72,12 @@ const Page = () => {
             <form onSubmit={onSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-white mb-2">First Name</label>
+                  <label
+                    htmlFor="firstName"
+                    className="block text-sm font-medium text-white mb-2"
+                  >
+                    First Name
+                  </label>
                   <input
                     id="firstName"
                     name="firstName"
@@ -82,7 +87,12 @@ const Page = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-white mb-2">Last Name</label>
+                  <label
+                    htmlFor="lastName"
+                    className="block text-sm font-medium text-white mb-2"
+                  >
+                    Last Name
+                  </label>
                   <input
                     id="lastName"
                     name="lastName"
@@ -93,7 +103,12 @@ const Page = () => {
                 </div>
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-white mb-2">Email Address</label>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-white mb-2"
+                >
+                  Email Address
+                </label>
                 <input
                   id="email"
                   name="email"
@@ -103,7 +118,12 @@ const Page = () => {
                 />
               </div>
               <div>
-                <label htmlFor="message" className="text-white block text-sm font-medium  mb-2">Your Message</label>
+                <label
+                  htmlFor="message"
+                  className="text-white block text-sm font-medium  mb-2"
+                >
+                  Your Message
+                </label>
                 <textarea
                   id="message"
                   name="message"
@@ -121,9 +141,6 @@ const Page = () => {
             </form>
           </div>
         </div>
-
-        
-        
       </div>
     </div>
   );
