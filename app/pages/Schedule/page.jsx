@@ -72,7 +72,7 @@ const Page = () => {
             />
             <TimelineItem
               date="September 10, 2024"
-              title="Registration Closes"
+              title="Registration Closes (extended till september 13)"
               description="Last day to register your team. Don't miss out!"
             />
             <TimelineItem

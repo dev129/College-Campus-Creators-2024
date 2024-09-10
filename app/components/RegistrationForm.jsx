@@ -126,7 +126,7 @@ const RegistrationForm = () => {
                     Hack the Future: Registration
                   </h2>
                   <p className="text-center mt-2 text-white">
-                    Join the innovation revolution!
+                    Join the innovation revolution! (registration extended till sept. 13 )
                   </p>
                 </div>
 
