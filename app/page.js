@@ -40,6 +40,9 @@ const LandingPage = () => {
             >
               College Campus Creators
             </h1>
+            <p className="text-xl md:text-2xl font-bold italic text-gray-300 mb-8">
+              Registration extended upto September 13.
+            </p>
             <p className="text-2xl md:text-3xl font-light italic text-gray-300 mb-8">
               ( Hack the Future: Campus Edition )
             </p>
