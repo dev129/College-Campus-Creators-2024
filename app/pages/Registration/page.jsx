@@ -1,14 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { supabase } from "@/app/supabaseConfig.js";
 import Swal from "sweetalert2";
 import Navbar from "@/app/components/Navbar.jsx";
+import { useRouter } from "next/navigation"; // Import useRouter
 
 const page = () => {
   const [teamSize, setTeamSize] = useState(2);
-  const router = useRouter();
+  const router = useRouter(); // Initialize router
 
   const [formData, setFormData] = useState({
     teamName: "",
@@ -25,13 +24,15 @@ const page = () => {
   useEffect(() => {
     setFormData((prevState) => ({
       ...prevState,
-      members: Array(teamSize - 1).fill().map(() => ({
-        name: "",
-        branch: "",
-        semester: "",
-        college: "",
-        role: "",
-      })),
+      members: Array(teamSize - 1)
+        .fill()
+        .map(() => ({
+          name: "",
+          branch: "",
+          semester: "",
+          college: "",
+          role: "",
+        })),
     }));
   }, [teamSize]);
 
@@ -53,61 +54,19 @@ const page = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const {
-      teamName,
-      teamIdea,
-      headName,
-      headBranch,
-      headSemester,
-      headCollege,
-      headPhone,
-      headGithub,
-      members,
-    } = formData;
 
-    const { error } = await supabase.from("registrations").insert([
-      {
-        team_name: teamName,
-        team_idea: teamIdea,
-        head_name: headName,
-        head_branch: headBranch,
-        head_semester: headSemester,
-        head_college: headCollege,
-        head_phone: headPhone,
-        head_github: headGithub,
-        members: members.map((member) => ({
-          name: member.name,
-          branch: member.branch,
-          semester: member.semester,
-          college: member.college,
-          role: member.role,
-        })),
-      },
-    ]);
-
-    if (error) {
-      Swal.fire({
-        title: "Oops!",
-        text: "Sorry, your team couldn't be registered. Please send your details from contact us page ",
-        icon: "error",
-      }).then(()=>{
-        router.push("/pages/ContactUs")
-      });
-    } else {
-      Swal.fire({
-        title: "Woohoo!",
-        text: "Your team is registered successfully for Campus Creators",
-        icon: "success",
-        confirmButtonText: "Cool, Let's Hack",
-        confirmButtonColor: "#06166A",
-      }).then(() => {
-        router.push("/");
-      });
-    }
+    Swal.fire({
+      title: "Registration Closed",
+      text: "Sorry, the registration for Campus Creators is currently closed.",
+      icon: "info",
+      confirmButtonText: "Okay",
+      confirmButtonColor: "#06166A",
+    }).then(() => {
+      router.push("/"); // Redirect to home when "Okay" is clicked
+    });
   };
-
   return (
     <>
       <Navbar />
@@ -285,22 +244,23 @@ const page = () => {
                               id={`member${index + 1}-${field.toLowerCase()}`}
                               className="w-full px-3 py-2 border rounded-md text-gray-900 bg-white focus:ring-2 focus:ring-purple-400"
                               placeholder={`Enter ${field.toLowerCase()}`}
-                              required
                               value={formData.members[index]?.[field.toLowerCase()] || ""}
                               onChange={(e) => handleMemberChange(index, e)}
+                              required
                             />
                           </div>
                         ))}
                       </div>
                     </section>
                   ))}
-
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                  >
-                    Let's Hack
-                  </button>
+                  <div className="mt-8 text-center">
+                    <button
+                      type="submit"
+                      className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 text-white py-3 px-6 rounded-full"
+                    >
+                      Submit
+                    </button>
+                  </div>
                 </div>
               </div>
             </form>
